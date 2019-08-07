@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.pos">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,10 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RegisterPOS"></activity>
+        <activity android:name=".Register2Cafe"></activity>
+        <activity android:name=".RegisterPOS" />
         <activity android:name=".LoginPOS" />
         <activity android:name=".HomeCafe" />
-        <activity android:name=".RegisterCafe" />
         <activity android:name=".LoginCafe" />
         <activity android:name=".Splashscreen">
             <intent-filter>

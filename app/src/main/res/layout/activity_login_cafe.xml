@@ -27,6 +27,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/layout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -34,23 +35,26 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Email"
+            android:text="Email Cafe"
             android:layout_marginTop="200dp"
             android:layout_marginLeft="37dp"
             android:textSize="17sp"
             android:textColor="@color/font"/>
 
         <EditText
+            android:id="@+id/eEmailCafe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="37dp"
             android:layout_marginRight="37dp"
-            android:hint="masukkan email"
+            android:hint="masukkan email cafe"
             android:textSize="15sp"
-            android:textColor="@color/font"/>
+            android:textColor="@color/font"
+            android:inputType="textEmailAddress"/>
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/layout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -59,28 +63,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Password"
-            android:layout_marginTop="280dp"
+            android:layout_marginTop="270dp"
             android:layout_marginLeft="37dp"
             android:textSize="17sp"
             android:textColor="@color/font"/>
 
         <EditText
+            android:id="@+id/ePasswordCafe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="37dp"
             android:layout_marginRight="37dp"
-            android:hint="masukkan password"
-            android:inputType="textPassword"
+            android:hint="masukkan password cafe"
             android:textSize="15sp"
-            android:textColor="@color/font"/>
+            android:textColor="@color/font"
+            android:inputType="textPassword"/>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
         <Button
+            android:id="@+id/btnLogin"
             android:layout_width="wrap_content"
             android:layout_height="35dp"
             android:layout_gravity="center"
@@ -95,26 +102,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="75dp"
+        android:layout_marginBottom="80dp"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginTop="400dp"
             android:text="Don't have any account?"
             android:textColor="@color/font"
             android:textSize="15sp" />
 
-        <Button
+        <TextView
+            android:id="@+id/tvPindah"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:onClick="signup"
             android:shadowColor="@color/font"
-            android:text="SIGN UP NOW"
-            android:textColor="@color/font"
-            android:textStyle="bold" />
+            android:text="Sign Up Here"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="@color/font"/>
+
     </LinearLayout>
 
 </RelativeLayout>

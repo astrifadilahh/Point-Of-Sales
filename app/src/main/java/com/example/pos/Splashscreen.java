@@ -18,7 +18,7 @@ public class Splashscreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent home = new Intent(Splashscreen.this, LoginCafe.class);
+                Intent home = new Intent(Splashscreen.this, Register2Cafe.class);
                 startActivity(home);
                 finish();
             }
@@ -26,7 +26,7 @@ public class Splashscreen extends AppCompatActivity {
     }
 
     public void next(View view) {
-        Intent intent = new Intent(Splashscreen.this, LoginCafe.class);
+        Intent intent = new Intent(Splashscreen.this, Register2Cafe.class);
         startActivity(intent);
     }
 }

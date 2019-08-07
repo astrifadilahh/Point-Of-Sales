@@ -20,37 +20,54 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import org.w3c.dom.Text;
 
-public class LoginCafe extends AppCompatActivity implements View.OnClickListener{
+public class Register2Cafe extends AppCompatActivity {
 
+    private Button btnRegister;
     private EditText editEmail, editPassword;
-    private TextView tvPindah;
-    private Button btnLogin;
+    private TextView textPindah;
     private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_cafe);
+        setContentView(R.layout.activity_register2_cafe);
 
+        progressDialog = new ProgressDialog(this);
         firebaseAuth = FirebaseAuth.getInstance();
         if (firebaseAuth.getCurrentUser() != null){
+
             finish();
             startActivity(new Intent(getApplicationContext(), HomeCafe.class));
         }
 
         editEmail = (EditText) findViewById(R.id.eEmailCafe);
         editPassword = (EditText) findViewById(R.id.ePasswordCafe);
-        btnLogin = (Button) findViewById(R.id.btnLogin);
-        tvPindah = (TextView) findViewById(R.id.tvPindah);
+        textPindah = (TextView) findViewById(R.id.tvPindah);
+        btnRegister = (Button) findViewById(R.id.btnRegister);
 
-        progressDialog = new ProgressDialog(this);
+        textPindah.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Register2Cafe.this, LoginCafe.class);
+                startActivity(i);
+            }
+        });
 
-        btnLogin.setOnClickListener(this);
-        tvPindah.setOnClickListener(this);
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (view == btnRegister){
+                    registerUser();
+                }
+                if (view == textPindah){
+                    startActivity(new Intent(getApplicationContext(), LoginCafe.class));
+                }
+            }
+        });
     }
 
-    private void userLogin(){
+    private void registerUser() {
         String email = editEmail.getText().toString().trim();
         String password = editPassword.getText().toString().trim();
 
@@ -63,29 +80,20 @@ public class LoginCafe extends AppCompatActivity implements View.OnClickListener
             return;
         }
 
-        progressDialog.setMessage("Login user");
+        progressDialog.setMessage("Registering Please Wait");
         progressDialog.show();
 
-        firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+        firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()){
+                if (task.isSuccessful()) {
                     finish();
                     startActivity(new Intent(getApplicationContext(), HomeCafe.class));
+                } else {
+                    Toast.makeText(Register2Cafe.this, "Couldn't Register", Toast.LENGTH_SHORT).show();
                 }
                 progressDialog.dismiss();
             }
         });
-    }
-
-    @Override
-    public void onClick(View view) {
-        if (view == btnLogin){
-            userLogin();
-        }
-        if (view == tvPindah){
-            finish();
-            startActivity(new Intent(this, Register2Cafe.class));
-        }
     }
 }
